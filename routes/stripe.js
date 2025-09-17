@@ -23,8 +23,8 @@ router.post('/create-checkout-session', async (req, res) => {
       }],
       customer_email: email,
       mode: 'payment',
-      success_url: 'http://localhost:3000/payment-success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:3000/payment-cancel',
+      success_url: `${process.env.FRONTEND_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+  cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
     });
     if (!session || !session.id) {
       console.error('Stripe session creation failed:', session);
